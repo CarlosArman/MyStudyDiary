@@ -9,6 +9,10 @@
 ![Tests](https://img.shields.io/badge/tests-59%20passed-brightgreen?style=flat)
 [![Live demo](https://img.shields.io/badge/demo-live-brightgreen?style=flat&logo=github)](https://carlosarman.github.io/MyStudyDiary/)
 
+<br>
+
+**[▶ Open live app →](https://carlosarman.github.io/MyStudyDiary/)**
+
 🌐 **Language / Idioma**
 
 🇬🇧 English &nbsp;|&nbsp; [🇪🇸 Español](README.es.md)
@@ -16,6 +20,8 @@
 A static web app to log study sessions and stay motivated by tracking your streak of consecutive study days.
 
 Practice project built while following the free course **[Curso de Desarrollo con IA: el Nuevo Programador](https://mouredev.com)** by [Brais Moure](https://github.com/mouredev).
+
+Built entirely with **[OpenCode](https://opencode.ai)** using AI agents — no code was written by hand.
 
 ![Mobile screenshot](captura-movil-375px.png)
 

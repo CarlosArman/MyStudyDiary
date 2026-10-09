@@ -9,6 +9,10 @@
 ![Tests](https://img.shields.io/badge/tests-59%20pasados-brightgreen?style=flat)
 [![Demo en vivo](https://img.shields.io/badge/demo-en%20vivo-brightgreen?style=flat&logo=github)](https://carlosarman.github.io/MyStudyDiary/)
 
+<br>
+
+**[▶ Abrir la app →](https://carlosarman.github.io/MyStudyDiary/)**
+
 🌐 **Language / Idioma**
 
 [🇬🇧 English](README.md) &nbsp;|&nbsp; 🇪🇸 Español
@@ -16,6 +20,8 @@
 Aplicación web estática para registrar sesiones de estudio y mantener la motivación viendo tu racha de días consecutivos.
 
 Proyecto de práctica desarrollado siguiendo el curso gratuito **[Curso de Desarrollo con IA: el Nuevo Programador](https://mouredev.com)** de [Brais Moure](https://github.com/mouredev).
+
+Creado íntegramente con **[OpenCode](https://opencode.ai)** usando agentes de IA — sin escribir código a mano.
 
 ![Captura en móvil](captura-movil-375px.png)
 
