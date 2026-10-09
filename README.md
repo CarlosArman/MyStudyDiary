@@ -23,7 +23,7 @@ Practice project built while following the free course **[Curso de Desarrollo co
 
 Built entirely with **[OpenCode](https://opencode.ai)** using AI agents — no code was written by hand.
 
-![Mobile screenshot](captura-movil-375px.png)
+<img src="captura-movil-375px.png" alt="Mobile screenshot" width="300">
 
 </div>
 

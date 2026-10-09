@@ -23,7 +23,7 @@ Proyecto de práctica desarrollado siguiendo el curso gratuito **[Curso de Desar
 
 Creado íntegramente con **[OpenCode](https://opencode.ai)** usando agentes de IA — sin escribir código a mano.
 
-![Captura en móvil](captura-movil-375px.png)
+<img src="captura-movil-375px.png" alt="Captura en móvil" width="300">
 
 </div>
 
