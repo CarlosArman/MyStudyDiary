@@ -1,0 +1,586 @@
+/* Diario de Estudio — "cuaderno de estudio" */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --papel: #faf7f0;
+  --tarjeta: #fffdf8;
+  --tinta: #26221b;
+  --tinta-suave: #6b6456;
+  --marcador: #ffd34d;
+  --linea: #e4ddc9;
+  --bordillo: #e9e2d0;
+  --llama: #e4572e;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--papel);
+  color: var(--tinta);
+  padding: 32px 16px;
+}
+
+.contenedor {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+/* --- Ficha de racha con cinta washi --- */
+.racha {
+  position: relative;
+  background: var(--tarjeta);
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+  padding: 32px 16px 26px;
+  box-shadow: 0 3px 0 var(--bordillo);
+}
+
+/* Cinta washi: el detalle memorable de la ficha */
+.racha::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 110px;
+  height: 26px;
+  background: rgba(255, 211, 77, 0.55);
+  border-radius: 2px;
+}
+
+.racha__tarjeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.racha__columna {
+  text-align: center;
+  flex: 1;
+}
+
+.racha__divisor {
+  width: 1px;
+  height: 64px;
+  background-color: var(--linea);
+}
+
+/* Números "escritos a mano": serif itálica con subrayado de marcador */
+.racha__numero {
+  display: inline-block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  background: linear-gradient(transparent 62%, var(--marcador) 62%);
+}
+
+/* La racha actual es la protagonista: más grande que la mejor */
+.racha__columna:first-child .racha__numero {
+  font-size: 3.4rem;
+}
+
+.racha__texto {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+
+/* --- Métricas secundarias: tarjetas discretas --- */
+.semana,
+.mes {
+  background: var(--tarjeta);
+  padding: 14px 18px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+}
+
+.semana__progreso,
+.mes__progreso {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.semana__icono,
+.mes__icono {
+  font-size: 1.4rem;
+  padding: 8px;
+  border-radius: 4px;
+  line-height: 1;
+  border: 1px solid var(--bordillo);
+}
+
+.semana__icono {
+  background: #fff4d6;
+}
+
+.mes__icono {
+  background: #e9f0fb;
+}
+
+.semana__info,
+.mes__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.semana__titulo,
+.mes__titulo {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  font-weight: 600;
+}
+
+.semana__tiempo,
+.mes__tiempo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--tinta);
+}
+
+/* --- Objetivo semanal: tarjeta, barra, estados y formulario desplegable ---
+   Solo se usan variables de la paleta existente (papel, tarjeta, línea,
+   marcador, bermellón) y los mismos colores que ya usa el resto de estilos. */
+
+/* Esta regla garantiza que lo que nace con `hidden` siga oculto aunque más
+   adelante se le asigne un `display` (T7 quita el atributo para desplegarlo). */
+.objetivo [hidden] {
+  display: none;
+}
+
+.objetivo {
+  background: var(--tarjeta);
+  padding: 14px 18px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+}
+
+/* Título y botón en la misma fila; si no caben, el botón baja de línea */
+.objetivo__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.objetivo__titulo {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  font-weight: 600;
+}
+
+/* Botón discreto: no debe competir con el "Guardar" del formulario */
+.objetivo__boton {
+  padding: 6px 12px;
+  background: transparent;
+  color: var(--llama);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.objetivo__boton:hover {
+  background: #fff4d6;
+  border-color: var(--marcador);
+}
+
+.objetivo__boton:focus-visible {
+  outline: 3px solid var(--marcador);
+  outline-offset: 2px;
+}
+
+/* Bloque de avance (lo muestra T7) */
+.objetivo__bloque {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.objetivo__etiqueta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+
+.objetivo__meta {
+  color: var(--tinta);
+}
+
+/* Canal de la barra: papel crema con el borde de línea, como una casilla vacía */
+.progreso {
+  height: 14px;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Relleno: bermellón. El ancho lo fija T7 con style="width: X%" */
+.progreso__barra {
+  height: 100%;
+  background: var(--llama);
+}
+
+/* El porcentaje se anota a la derecha, bajo la barra */
+.objetivo__porcentaje {
+  align-self: flex-end;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--tinta);
+}
+
+/* min-height reserva el hueco: el bloque no salta al aparecer el mensaje */
+.objetivo__estado {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tinta-suave);
+}
+
+/* Estados 'alcanzado' y 'superado': se distinguen por color de barra y texto.
+   Sin animaciones (RNF-1). T7 marca el estado con data-estado en este bloque.
+   'adelante' (o sin atributo) no necesita estilo propio: texto neutro. */
+.objetivo__bloque[data-estado="alcanzado"] .objetivo__estado {
+  color: var(--llama);
+}
+
+/* Superado: relleno marcador amarillo con un filo bermellón que lo destaca */
+.objetivo__bloque[data-estado="superado"] .progreso__barra {
+  background: var(--marcador);
+  box-shadow: inset 0 0 0 1px var(--llama);
+}
+
+.objetivo__bloque[data-estado="superado"] .objetivo__estado {
+  color: var(--llama);
+}
+
+/* --- Formulario desplegable: tarjeta discreta dentro de la sección --- */
+.objetivo__formulario {
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.objetivo__formulario label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* width 100% + min-width 0 evitan que el input se salga en pantallas de 320 px */
+.objetivo__formulario input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+  background: var(--tarjeta);
+  color: var(--tinta);
+  font-size: 1rem;
+}
+
+.objetivo__formulario input:focus {
+  outline: none;
+  border-color: var(--llama);
+  box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.15);
+}
+
+.objetivo__error {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--llama);
+}
+
+/* Los botones se reparten la fila y, si no caben, se apilan sin desbordar */
+.objetivo__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.objetivo__acciones button {
+  flex: 1 1 120px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#botonGuardarObjetivo {
+  background: var(--llama);
+  color: #fff;
+  border: 1px solid var(--llama);
+}
+
+#botonGuardarObjetivo:hover {
+  background: #c94a24;
+  border-color: #c94a24;
+}
+
+#botonEliminarObjetivo {
+  background: transparent;
+  color: var(--tinta-suave);
+  border: 1px solid var(--linea);
+}
+
+#botonEliminarObjetivo:hover {
+  background: var(--tarjeta);
+  border-color: var(--bordillo);
+  color: var(--tinta);
+}
+
+.objetivo__acciones button:focus-visible {
+  outline: 3px solid var(--marcador);
+  outline-offset: 2px;
+}
+
+/* --- Formulario --- */
+.formulario {
+  background: var(--tarjeta);
+  padding: 20px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+}
+
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formulario label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.formulario input {
+  padding: 10px 12px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+  background: #fff;
+  font-size: 1rem;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: var(--llama);
+  box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.15);
+}
+
+.formulario button {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--llama);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background: #c94a24;
+}
+
+.formulario button:focus-visible {
+  outline: 3px solid rgba(228, 87, 46, 0.4);
+  outline-offset: 2px;
+}
+
+/* --- Historial sobre líneas de libreta --- */
+.sesiones {
+  background: transparent;
+  padding: 4px 10px 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sesiones__vacio {
+  color: var(--tinta-suave);
+  font-size: 0.95rem;
+}
+
+.sesiones__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.sesiones__lista li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 2px;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1.5px solid var(--linea);
+}
+
+.sesion__tema {
+  font-weight: 600;
+}
+
+.sesion__fecha {
+  font-size: 0.82rem;
+  color: var(--tinta-suave);
+}
+
+.sesion__minutos {
+  color: var(--llama);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- Mapa de calor de las últimas 8 semanas --- */
+.mapa {
+  background: var(--tarjeta);
+  padding: 20px;
+  border: 1px solid var(--bordillo);
+  border-radius: 4px;
+}
+
+/* 8 columnas (semanas, actual a la derecha) x 7 filas (lunes arriba) */
+.mapa__grid {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 4px;
+}
+
+.mapa__celda {
+  aspect-ratio: 1;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.mapa__celda.nivel-0 {
+  background-color: #efe9da;
+}
+
+.mapa__celda.nivel-1 {
+  background-color: #ffe08a;
+}
+
+.mapa__celda.nivel-2 {
+  background-color: #ffbf54;
+}
+
+.mapa__celda.nivel-3 {
+  background-color: #f08a32;
+}
+
+.mapa__celda.nivel-4 {
+  background-color: var(--llama);
+}
+
+/* Día futuro: hueco, sin fondo ni interacción, distinto del nivel 0 */
+.mapa__celda:disabled {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px #f3ede0;
+  cursor: default;
+}
+
+/* Día seleccionado para ver el detalle */
+.mapa__celda--activa {
+  outline: 2px solid var(--tinta);
+  outline-offset: 1px;
+}
+
+.mapa__celda:focus-visible {
+  outline: 3px solid var(--marcador);
+  outline-offset: 1px;
+}
+
+.mapa__detalle {
+  min-height: 1.4em;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.mapa__vacio {
+  margin-top: 10px;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+.mapa__leyenda {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+}
+
+.mapa__muestra {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.mapa__muestra.nivel-0 {
+  background-color: #efe9da;
+}
+
+.mapa__muestra.nivel-1 {
+  background-color: #ffe08a;
+}
+
+.mapa__muestra.nivel-2 {
+  background-color: #ffbf54;
+}
+
+.mapa__muestra.nivel-3 {
+  background-color: #f08a32;
+}
+
+.mapa__muestra.nivel-4 {
+  background-color: var(--llama);
+}

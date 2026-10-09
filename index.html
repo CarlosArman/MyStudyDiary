@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="contenedor">
+    <h1>📚 Diario de Estudio</h1>
+
+    <!-- Racha -->
+    <section class="racha">
+      <div class="racha__tarjeta">
+        <div class="racha__columna">
+          <p class="racha__numero" id="rachaNumero">0</p>
+          <p class="racha__texto">🔥 Racha actual</p>
+        </div>
+        <div class="racha__divisor"></div>
+        <div class="racha__columna">
+          <p class="racha__numero" id="mejorRachaNumero">0</p>
+          <p class="racha__texto">🏆 Mejor racha</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progreso Semanal -->
+    <section class="semana">
+      <div class="semana__progreso">
+        <span class="semana__icono">⚡</span>
+        <div class="semana__info">
+          <h3 class="semana__titulo">Estudio esta semana</h3>
+          <p class="semana__tiempo" id="minutosSemana">0 min</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objetivo semanal (complementa "Estudio esta semana", no lo duplica) -->
+    <section class="objetivo">
+      <div class="objetivo__cabecera">
+        <h3 class="objetivo__titulo">Objetivo semanal</h3>
+        <button type="button" id="botonFijarObjetivo" class="objetivo__boton">Fijar objetivo</button>
+      </div>
+
+      <!-- Bloque de avance: oculto mientras no haya objetivo (lo muestra T7) -->
+      <div id="bloqueObjetivo" class="objetivo__bloque" hidden>
+        <p class="objetivo__etiqueta">
+          Tu objetivo semanal: <span id="objetivoMinutos" class="objetivo__meta"></span>
+        </p>
+        <div class="progreso" role="progressbar" aria-label="Avance del objetivo semanal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progreso__barra" id="barraObjetivo" style="width: 0%"></div>
+        </div>
+        <p class="objetivo__porcentaje" id="porcentajeObjetivo">0 %</p>
+        <!-- Hueco para el mensaje de estado: "Objetivo alcanzado" / "¡Objetivo superado!" (T7) -->
+        <p class="objetivo__estado" id="estadoObjetivo" aria-live="polite"></p>
+      </div>
+
+      <!-- Formulario desplegable: oculto por defecto (la lógica de abrir/cerrar es de T7) -->
+      <!-- `novalidate`: la validación la hace app.js con `esObjetivoValido`
+           para que el mensaje de RF-2 salga siempre en español (si no, el
+           navegador bloquea el envío con su propio aviso al escribir "3.5"). -->
+      <form id="formularioObjetivo" class="objetivo__formulario" novalidate hidden>
+        <label for="minutosObjetivo">Minutos de objetivo semanal</label>
+        <input type="number" id="minutosObjetivo" step="1" placeholder="Ej. 300" />
+        <!-- Hueco para el mensaje de error en español de RF-2 (lo rellena T7) -->
+        <p class="objetivo__error" id="errorObjetivo" hidden></p>
+        <div class="objetivo__acciones">
+          <button type="submit" id="botonGuardarObjetivo">Guardar</button>
+          <button type="button" id="botonEliminarObjetivo">Eliminar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Días del Mes -->
+    <section class="mes">
+      <div class="mes__progreso">
+        <span class="mes__icono">📅</span>
+        <div class="mes__info">
+          <h3 class="mes__titulo">Días estudiados este mes</h3>
+          <p class="mes__tiempo" id="diasMes">0 días</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapa de calor -->
+    <section class="mapa">
+      <h2>Constancia</h2>
+      <div id="mapaGrid" class="mapa__grid" aria-label="Mapa de calor de las últimas 8 semanas"></div>
+      <p id="mapaDetalle" class="mapa__detalle" aria-live="polite"></p>
+      <p id="mensajeMapaVacio" class="mapa__vacio">Registra tu primera sesión y empieza a ver tu constancia.</p>
+      <div class="mapa__leyenda" aria-hidden="true">
+        <span>menos</span>
+        <span class="mapa__muestra nivel-0"></span>
+        <span class="mapa__muestra nivel-1"></span>
+        <span class="mapa__muestra nivel-2"></span>
+        <span class="mapa__muestra nivel-3"></span>
+        <span class="mapa__muestra nivel-4"></span>
+        <span>más</span>
+      </div>
+    </section>
+
+    <!-- Formulario -->
+    <section class="formulario">
+      <h2>Registrar sesión</h2>
+      <form id="formularioSesion">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" required />
+
+        <label for="tema">Tema</label>
+        <input type="text" id="tema" placeholder="Ej. Matemáticas" required />
+
+        <label for="minutos">Minutos</label>
+        <input type="number" id="minutos" min="1" step="1" placeholder="Ej. 45" required />
+
+        <button type="submit">Añadir sesión</button>
+      </form>
+    </section>
+
+    <!-- Lista de sesiones -->
+    <section class="sesiones">
+      <h2>Mis sesiones</h2>
+      <p id="mensajeVacio" class="sesiones__vacio">Todavía no has registrado ninguna sesión.</p>
+      <ul id="listaSesiones" class="sesiones__lista"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
