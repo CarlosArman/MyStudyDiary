@@ -99,13 +99,22 @@ MyStudyDiary/
 
 ---
 
-## 🧪 Tests
+## 🧪 Tests & CI
 
 Los tests cubren la lógica pura del objetivo semanal (59 casos). No requieren dependencias externas:
 
 ```bash
 node --test test/test-objetivo.js
 ```
+
+Dos workflows de **GitHub Actions** se ejecutan automáticamente en cada push a `main` y en cada pull request:
+
+| Workflow | Archivo | Qué hace |
+|---|---|---|
+| ✅ Tests | `.github/workflows/tests.yml` | Ejecuta los 59 tests con `node --test` |
+| 🔍 CodeQL | `.github/workflows/codeql.yml` | Análisis estático — busca vulnerabilidades de seguridad en el JavaScript |
+
+El badge de tests en la cabecera del README refleja el estado en tiempo real.
 
 ---
 

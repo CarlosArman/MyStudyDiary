@@ -20,7 +20,6 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
   «Días estudiados este mes» (📅) y mapa de calor `Constancia` (8 semanas × 7 días, 5 niveles fijos, futuros huecos e inertes).
 - Clave `diario-estudio-sesiones` con retrocompatibilidad (formato viejo `fecha/tema/minutos`). Spec 001 en `specs/001-heat-map/`.
 - **Pendiente:** cerrar formalmente la spec 002 (estado "implementada" en `spec.md` y revisión de criterios de finalización).
-- `README.md` actualizado para portafolio GitHub: screenshot móvil, badges HTML/CSS/JS, tabla de funcionalidades, estructura, tests, decisiones técnicas y sección «Sobre el curso» con los 3 vídeos de YouTube del taller de Brais Moure.
 
 ## Decisiones (y por qué)
 - **Segunda clave de localStorage** (`diario-estudio-objetivo`): el objetivo es configuración del usuario, no una sesión;

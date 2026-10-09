@@ -107,7 +107,14 @@ Tests cover the pure logic of the weekly goal (59 cases). No external dependenci
 node --test test/test-objetivo.js
 ```
 
-A **GitHub Actions** workflow (`.github/workflows/tests.yml`) runs these tests automatically on every push to `main` and on every pull request. The badge at the top of this README reflects the current test status in real time.
+Two **GitHub Actions** workflows run automatically on every push to `main` and on every pull request:
+
+| Workflow | File | What it does |
+|---|---|---|
+| ✅ Tests | `.github/workflows/tests.yml` | Runs the 59 unit tests with `node --test` |
+| 🔍 CodeQL | `.github/workflows/codeql.yml` | Static analysis — scans JavaScript for security vulnerabilities |
+
+The test badge at the top of this README reflects the current status in real time.
 
 ---
 
