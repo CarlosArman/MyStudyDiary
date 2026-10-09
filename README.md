@@ -1,10 +1,39 @@
-# 📚 Study Diary (Diario de Estudio)
+<div align="center">
 
-> A static web app to log study sessions and stay motivated by tracking your streak of consecutive study days.
+# 📚 Study Diary
 
-Practice project built while following the free course **[Curso de Desarrollo con IA: el Nuevo Programador](https://mouredev.com)** by [Brais Moure](https://github.com/mouredev) — learn to code with the help of AI agents.
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Tests](https://img.shields.io/badge/tests-59%20passed-brightgreen?style=flat)
+
+🌐 **Language / Idioma**
+
+🇬🇧 English &nbsp;|&nbsp; [🇪🇸 Español](README.es.md)
+
+A static web app to log study sessions and stay motivated by tracking your streak of consecutive study days.
+
+Practice project built while following the free course **[Curso de Desarrollo con IA: el Nuevo Programador](https://mouredev.com)** by [Brais Moure](https://github.com/mouredev).
 
 ![Mobile screenshot](captura-movil-375px.png)
+
+</div>
+
+---
+
+## 🎯 Why This Project Matters
+
+This repository is designed as a **front-end portfolio project** that demonstrates more than a simple to-do app. It highlights how to build a browser-only web app with no frameworks, no build tools, and no server — just clean, readable code.
+
+It demonstrates practical front-end concepts such as:
+
+- **Local date handling** — avoiding the classic UTC offset bug with `toISOString()` and `new Date("YYYY-MM-DD")`
+- **Streak logic** — calculating consecutive study days correctly, even across week/month boundaries
+- **Data persistence** — using `localStorage` with separate keys to protect existing user data
+- **Responsive design** — mobile-first layout tested down to 320 px with a "study notebook" visual language
+- **SDD workflow** (Spec-Driven Development) — every feature goes through spec → plan → tasks → implementation → tests before touching code
+- **Pure-logic unit tests** — 59 test cases with `node --test`, no external dependencies
 
 ---
 
@@ -37,10 +66,6 @@ MyStudyDiary/
 ---
 
 ## 🛠️ Tech stack
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 - **Pure HTML, CSS and JavaScript** — no frameworks, no npm, no build step.
 - **localStorage** to persist sessions and the weekly goal between visits.
@@ -83,7 +108,6 @@ node --test test/test-objetivo.js
 - **Correct streak logic**: consecutive days ending today; if there is no session today but there was yesterday, the streak stays alive.
 - **Goal status based on exact minutes**, not on the rounded percentage (299 min with goal 300 → not reached, even if the visual percentage shows 100 %).
 - **Separate localStorage keys**: sessions (`diario-estudio-sesiones`) and goal (`diario-estudio-objetivo`) are stored independently to avoid data mixing and protect existing records.
-- **SDD workflow** (Spec-Driven Development): every feature goes through spec → plan → tasks → implementation → tests before touching code.
 
 ---
 
