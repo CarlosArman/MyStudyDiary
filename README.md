@@ -99,13 +99,15 @@ MyStudyDiary/
 
 ---
 
-## 🧪 Tests
+## 🧪 Tests & CI
 
 Tests cover the pure logic of the weekly goal (59 cases). No external dependencies required:
 
 ```bash
 node --test test/test-objetivo.js
 ```
+
+A **GitHub Actions** workflow (`.github/workflows/tests.yml`) runs these tests automatically on every push to `main` and on every pull request. The badge at the top of this README reflects the current test status in real time.
 
 ---
 
