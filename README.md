@@ -7,6 +7,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Tests](https://img.shields.io/badge/tests-59%20passed-brightgreen?style=flat)
+[![Live demo](https://img.shields.io/badge/demo-live-brightgreen?style=flat&logo=github)](https://carlosarman.github.io/MyStudyDiary/)
 
 🌐 **Language / Idioma**
 
